@@ -1,6 +1,8 @@
 const webpack = require('atool-build/lib/webpack');
 const path = require('path');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
+const glob = require('glob');
+const PxToRem = require('postcss-pxtorem');
 
 module.exports = function (webpackConfig, env) {
   webpackConfig.babel.plugins.push('transform-runtime');
@@ -54,6 +56,33 @@ module.exports = function (webpackConfig, env) {
       loader.test = /\.css$/;
     }
   });
+
+  // svg icon config
+  const svgDirs = []; // 如果需要本地部署图标，需要在此加入本地图标路径，本地部署方式见以下文档
+  // 把`antd-mobile/lib`目录下的 svg 文件加入进来，给 svg-sprite-loader 插件处理
+  glob.sync('node_modules/**/*antd-mobile/lib', { dot: true }).forEach((p) => {
+    svgDirs.push(new RegExp(p));
+  });
+  // exclude the default svg-url-loader from
+  // atool-build https://github.com/ant-tool/atool-build/blob/e4bd2959689b6a95cb5c1c854a5db8c98676bdb3/src/getWebpackCommonConfig.js#L161
+  webpackConfig.module.loaders.forEach((loader) => {
+    if (loader.test.toString() === '/\\.svg(\\?v=\\d+\\.\\d+\\.\\d+)?$/') {
+      loader.exclude = svgDirs;
+    }
+  });
+  // Note: https://github.com/kisenka/svg-sprite-loader/issues/4
+  // Can not process SVG files twice. You need to make sure of it yourself.
+  webpackConfig.module.loaders.unshift({
+    test: /\.svg$/,
+    loader: 'svg-sprite',
+    include: svgDirs,
+  });
+
+  // CSS像素单位 px 转 rem：配合高清方案
+  webpackConfig.postcss.push(PxToRem({
+    rootValue: 100,
+    propList: [ 'font', 'font-size', 'height', 'width', 'line-height' ],
+  }));
 
   return webpackConfig;
 };

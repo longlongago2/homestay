@@ -8,7 +8,7 @@ const Banner = ({ bannerList, loading }) => {
       {
         loading ?
           <div className={styles.loading}>
-            <ActivityIndicator />
+            <ActivityIndicator size="large" text="图片加载中..." />
           </div> :
           <Carousel
             className={styles.carousel}

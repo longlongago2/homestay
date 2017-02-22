@@ -24,7 +24,7 @@ module.exports = {
 
   'GET /homestay/banner.do': function (req, res) {
     const code = '0000';
-    if (code == '0000') {
+    if (code === '0000') {
       setTimeout(() => {
         res.json({
           code,

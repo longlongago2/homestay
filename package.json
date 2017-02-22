@@ -9,9 +9,11 @@
     "dva": "^1.2.1",
     "dva-loading": "^0.2.0",
     "jquery": "^3.1.1",
+    "postcss-pxtorem": "^4.0.0",
     "qs": "^6.3.0",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
+    "react-native": "^0.41.2",
     "redux-undo": "^1.0.0-beta9-2"
   },
   "devDependencies": {
@@ -32,9 +34,11 @@
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.8.0",
     "expect": "^1.20.2",
+    "glob": "^7.1.1",
     "mockjs": "^1.0.1-beta3",
     "open-browser-webpack-plugin": "0.0.3",
-    "redbox-react": "^1.2.10"
+    "redbox-react": "^1.2.10",
+    "svg-sprite-loader": "^0.3.0"
   },
   "scripts": {
     "start": "dora --plugins \"proxy?watchDirs=./mock,webpack,webpack-hmr\"",
