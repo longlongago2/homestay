@@ -5,14 +5,13 @@ import Banner from '../../components/Banner';
 import Region from '../../components/RegionList';
 import styles from './IndexPage.less';
 
-const IndexPage = ({ bannerList, region, regionOneList, loading }) => {
+const IndexPage = ({ bannerList, regionList, loading }) => {
   const bannerProps = {
     bannerList,
     loading: loading.models.Banner,
   };
   const regionProps = {
-    region,
-    regionOneList,
+    regionList,
     loading: loading.models.Region,
   };
   return (
@@ -25,8 +24,7 @@ const IndexPage = ({ bannerList, region, regionOneList, loading }) => {
 
 IndexPage.propTypes = {
   bannerList: PropTypes.array,
-  region: PropTypes.array,
-  regionOneList: PropTypes.array,
+  regionList: PropTypes.array,
   loading: PropTypes.object,
 };
 

@@ -1,5 +1,10 @@
 @import "../index.less";
 
+.resultIcon {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
 .firstList {
   width: 100%;
   padding: 0.2rem 0;
@@ -37,8 +42,15 @@
           }
         }
         span {
+          display: block;
           color: @text-color;
           font: 0.25rem/0.5rem sans-serif;
+          width: 1.5rem;
+          height: 0.5rem;
+          overflow: hidden;
+          -ms-text-overflow: ellipsis;
+          text-overflow: ellipsis;
+          white-space: nowrap;
         }
       }
     }

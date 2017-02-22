@@ -63,7 +63,7 @@ module.exports = function (webpackConfig, env) {
     // path.resolve(__dirname, 'src/my-project-svg-foler'),  // 自己私人的 svg 存放目录
   ];
 
-// 2. 把属于 antd-mobile 内置 svg 文件也加入进来
+  // 2. 把属于 antd-mobile 内置 svg 文件也加入进来
   const antdDir = require.resolve('antd-mobile').replace(/warn\.js$/, '');
   svgDirs.push(antdDir);
 
@@ -73,7 +73,6 @@ module.exports = function (webpackConfig, env) {
       loader.exclude = svgDirs;
     }
   });
-  
   // 4. 配置 webpack loader
   webpackConfig.module.loaders.unshift({
     test: /\.(svg)$/i,

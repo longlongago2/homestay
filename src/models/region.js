@@ -1,12 +1,13 @@
-import { Toast } from 'antd-mobile';
+import { parse } from 'qs';
+import { queryRegionList, queryOneRegionDetailByRegionId } from '../services/region';
 
 export default {
 
   namespace: 'Region',
 
   state: {
-    region: [],
-    regionOneList: []
+    regionList: [],
+    oneRegionDetail: {}
   },
 
   subscriptions: {
@@ -17,22 +18,58 @@ export default {
             type: 'queryRegionList',
           });
         }
+        if (location.pathname.indexOf('/region/') >= 0) {
+          dispatch({
+            type: 'queryOneRegionDetail',
+            payload: {
+              regionId: location.pathname.split('/')[ 2 ]
+            }
+          });
+        }
       });
     },
   },
 
   effects: {
     * queryRegionList({ payload }, { call, put }) {
-      Toast.loading('数据加载中...', 0);
-      yield put({
-        type: 'queryRegionListSuccess'
-      });
+      const { data, err } = yield call(queryRegionList, parse(payload));
+      if (err) {
+        throw new Error(`fetch报错：${err.message}`);
+      }
+      if (data && data.code === '0000') {
+        yield put({
+          type: 'queryRegionListSuccess',
+          payload: {
+            regionList: data.data,
+          }
+        });
+      } else {
+        throw new Error(`接口异常：${data.code}`);
+      }
     },
+    * queryOneRegionDetail({ payload }, { call, put }) {
+      const { data, err } = yield call(queryOneRegionDetailByRegionId, parse(payload));
+      if (err) {
+        throw new Error(`fetch报错：${err.message}`);
+      }
+      if (data && data.code === '0000') {
+        yield put({
+          type: 'queryOneRegionDetailSuccess',
+          payload: {
+            oneRegionDetail: data.data
+          }
+        });
+      } else {
+        throw new Error(`接口异常：${data.code}`);
+      }
+    }
   },
 
   reducers: {
     queryRegionListSuccess(state, action) {
-      //Toast.hide();
+      return { ...state, ...action.payload };
+    },
+    queryOneRegionDetailSuccess(state, action) {
       return { ...state, ...action.payload };
     },
   },

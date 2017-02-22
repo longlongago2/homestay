@@ -11,6 +11,7 @@
     "jquery": "^3.1.1",
     "postcss-pxtorem": "^4.0.0",
     "qs": "^6.3.0",
+    "rc-queue-anim": "^0.13.0",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "react-native": "^0.41.2",
