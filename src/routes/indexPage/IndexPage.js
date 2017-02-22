@@ -2,23 +2,23 @@ import React, { Component, PropTypes } from 'react';
 import { connect } from 'dva';
 import { Link } from 'dva/router';
 import Banner from '../../components/Banner';
+import Region from '../../components/RegionList';
 import styles from './IndexPage.less';
 
 const IndexPage = ({ bannerList, region, regionOneList, loading }) => {
   const bannerProps = {
     bannerList,
-    loading: loading.models.Banner ? loading.models.Banner : false,
+    loading: loading.models.Banner,
+  };
+  const regionProps = {
+    region,
+    regionOneList,
+    loading: loading.models.Region,
   };
   return (
     <div className={styles.container}>
       <Banner {...bannerProps} />
-      <ul className={styles.list}>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-        <li>5</li>
-      </ul>
+      <Region {...regionProps} />
     </div>
   );
 };

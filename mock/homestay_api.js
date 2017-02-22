@@ -30,7 +30,7 @@ module.exports = {
           code,
           data: global.resData.bannerList,
         });
-      }, 5000);
+      }, 1000);
     }
   },
 

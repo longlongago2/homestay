@@ -12,7 +12,7 @@ export default {
   subscriptions: {
     setup({ dispatch, history }) {
       history.listen((location) => {
-        if (location.pathname.indexOf('/') >= 0) {
+        if (location.pathname === '/') {
           dispatch({
             type: 'queryBannerList',
           });

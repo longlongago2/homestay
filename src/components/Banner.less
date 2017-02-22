@@ -1,17 +1,20 @@
 @import "../index.less";
 
+.loading {
+  display: flex;
+  justify-content: center;
+  height: 400px;
+  background: @base-color;
+}
+
 .carouselLayout {
   width: 100%;
   background: @base-color;
-  .loading {
-    display: flex;
-    justify-content: center;
-    height: 400px;
-  }
   .carousel {
     height: 400px;
     a {
       display: inline-block;
+      list-style: none;
       width: 100%;
       margin: 0;
       padding: 0;

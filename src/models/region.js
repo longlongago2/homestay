@@ -1,3 +1,5 @@
+import { Toast } from 'antd-mobile';
+
 export default {
 
   namespace: 'Region',
@@ -9,17 +11,28 @@ export default {
 
   subscriptions: {
     setup({ dispatch, history }) {
+      history.listen((location) => {
+        if (location.pathname === '/') {
+          dispatch({
+            type: 'queryRegionList',
+          });
+        }
+      });
     },
   },
 
   effects: {
-    * fetchRemote({ payload }, { call, put }) {
-      yield put({});
+    * queryRegionList({ payload }, { call, put }) {
+      Toast.loading('数据加载中...', 0);
+      yield put({
+        type: 'queryRegionListSuccess'
+      });
     },
   },
 
   reducers: {
-    fetch(state, action) {
+    queryRegionListSuccess(state, action) {
+      //Toast.hide();
       return { ...state, ...action.payload };
     },
   },
