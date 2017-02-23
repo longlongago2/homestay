@@ -27,7 +27,7 @@ const mockData = Mock.mock({
   } ],
   'oneRegionDetail': {
     'childRegions': [],
-    'description': '@cword(10)',
+    'description': '@cword(50)',
     'id': '@id',
     'images|2': [ {
       'description': '@cword(10)',
@@ -75,7 +75,7 @@ module.exports = {
     setTimeout(() => {
       res.json({
         code,
-        data: global.resData.oneRegionDetail,
+        data: mockData.oneRegionDetail,
         message: ''
       });
     }, 1000);

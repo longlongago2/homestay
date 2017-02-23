@@ -3,7 +3,7 @@ import { Result, Icon } from 'antd-mobile';
 import QueueAnimation from 'rc-queue-anim';
 import styles from './RegionList.less';
 
-const RegionList = ({ loading, regionList }) => {
+const RegionList = ({ loading, regionList, onLink }) => {
   if (loading) {
     return (
       <Result
@@ -14,7 +14,7 @@ const RegionList = ({ loading, regionList }) => {
     );
   }
   return (
-    <QueueAnimation type="bottom" className={styles.firstList}>
+    <QueueAnimation type="left" className={styles.firstList}>
       {
         regionList && regionList.length > 0 ?
           regionList.map((item) => {
@@ -27,7 +27,12 @@ const RegionList = ({ loading, regionList }) => {
                       item.childRegions.map((secondItem) => {
                         return (
                           <li key={`second-${secondItem.id}`}>
-                            <a>
+                            <a
+                              onClick={(e) => {
+                                e.preventDefault();
+                                onLink(`/region/${secondItem.id}`);
+                              }}
+                            >
                               <img src="http://up.qqjia.com/z/04/tu6133_4.jpg" alt={secondItem.description} />
                             </a>
                             <span>{secondItem.name}</span>
@@ -46,5 +51,6 @@ const RegionList = ({ loading, regionList }) => {
 RegionList.propTypes = {
   loading: PropTypes.bool.isRequired,
   regionList: PropTypes.array.isRequired,
+  onLink: PropTypes.func.isRequired,
 };
 export default RegionList;
