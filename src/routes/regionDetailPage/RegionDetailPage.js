@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'dva';
-import { Card, WingBlank, WhiteSpace, Result, Icon } from 'antd-mobile';
+import { Card, WingBlank, WhiteSpace, Result, Icon, ListView } from 'antd-mobile';
 import styles from './RegionDetailPage.less';
 
 const RegionDetailPage = ({ oneRegionDetail, loading }) => {
@@ -47,6 +47,7 @@ const RegionDetailPage = ({ oneRegionDetail, loading }) => {
         <Card.Footer extra={oneRegionDetail.name} />
       </Card>
       <WhiteSpace size="lg" />
+      <ListView />
     </WingBlank>
   );
 };
