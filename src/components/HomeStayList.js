@@ -9,7 +9,7 @@ const HomeStayList = ({ homeStayList, onLink }) => {
       <Card>
         <Card.Header
           title="民宿信息"
-          thumb="http://up.qqjia.com/z/04/tu6133_4.jpg"
+          thumb={require('../statics/homeStay.png')}
           thumbStyle={{ width: '1rem', height: '1rem' }}
         />
         <Card.Body>
@@ -23,13 +23,19 @@ const HomeStayList = ({ homeStayList, onLink }) => {
                         item.icons && item.icons.length > 0 ?
                           item.icons.map((secondItem) => {
                             return (
-                              <div key={`icons-${secondItem.id}`} className={styles.imgList}>
-                                <img src={secondItem.path} alt={secondItem.description} />
-                              </div>
+                              <div
+                                key={`icons-${secondItem.id}`}
+                                className={styles.imgList}
+                                title={secondItem.description}
+                                style={{
+                                  background: `#ffffff url('${secondItem.path}') no-repeat center`,
+                                  backgroundSize: 'cover',
+                                }}
+                              />
                             );
                           }) :
                           <div className={styles.imgList}>
-                            <img src={require('../statics/no-picture.svg')} alt="无数据" />
+                            <img src={require('../statics/no-picture.png')} alt="无数据" />
                           </div>
                       }
                     </Carousel>

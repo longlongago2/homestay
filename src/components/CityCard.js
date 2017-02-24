@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { Card, WingBlank, WhiteSpace, } from 'antd-mobile';
+import { Card, WingBlank, WhiteSpace } from 'antd-mobile';
 import styles from './CityCard.less';
 
 const CityCard = ({ oneRegionDetail }) => {
@@ -9,7 +9,7 @@ const CityCard = ({ oneRegionDetail }) => {
       <Card>
         <Card.Header
           title={oneRegionDetail.name}
-          thumb="http://up.qqjia.com/z/04/tu6133_4.jpg"
+          thumb={require('../statics/city.png')}
           thumbStyle={{ width: '1rem', height: '1rem' }}
         />
         <Card.Body>

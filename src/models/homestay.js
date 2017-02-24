@@ -2,7 +2,11 @@ export default {
 
   namespace: 'HomeStay',
 
-  state: {},
+  state: {
+    address: {},
+    album: [],
+    house: [],
+  },
 
   subscriptions: {
     setup({ dispatch, history }) {

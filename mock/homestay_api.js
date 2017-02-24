@@ -46,8 +46,8 @@ const mockData = Mock.mock({
       'description': '@cword(15)',
       'id': '@id',
       'path|+1': [
-        'http://img.cnjiayu.net/3211573049-3310678237-21-0.jpg',
-        'http://up.qqya.com/allimg/201710-t/17-101803_106599.jpg'
+        'https://zos.alipayobjects.com/rmsportal/hzPBTkqtFpLlWCi.jpg',
+        'https://zos.alipayobjects.com/rmsportal/gGlUMYGEIvjDOOw.jpg'
       ],
       'title': '@ctitle(5,10)'
     } ],

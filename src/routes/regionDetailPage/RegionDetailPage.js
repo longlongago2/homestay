@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'dva';
-import { Result, Icon } from 'antd-mobile';
+import { Result, Icon, WhiteSpace } from 'antd-mobile';
 import CityCard from '../../components/CityCard';
 import HomeStayList from '../../components/HomeStayList';
 import styles from './RegionDetailPage.less';
@@ -19,11 +19,16 @@ const RegionDetailPage = ({ dispatch, oneRegionDetail, homeStayList, loading }) 
 
   if (loading.models.Region) {
     return (
-      <Result
-        img={<Icon type="loading" className={styles.resultIcon} />}
-        title="初始化"
-        message="努力加载中，请稍候..."
-      />
+      <div>
+        <Result
+          img={<Icon type={require('../../statics/no-picture.svg')} className={styles.resultIcon} />}
+          title="初始化"
+          message="努力加载中，请稍候..."
+        />
+        <WhiteSpace />
+        <Icon type="loading" className={styles.resultIcon} />
+        <WhiteSpace />
+      </div>
     );
   }
   return (
