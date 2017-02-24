@@ -47,7 +47,6 @@ const RegionDetailPage = ({ oneRegionDetail, loading }) => {
         <Card.Footer extra={oneRegionDetail.name} />
       </Card>
       <WhiteSpace size="lg" />
-      <ListView />
     </WingBlank>
   );
 };
