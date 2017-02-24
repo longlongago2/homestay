@@ -1,0 +1,50 @@
+@import "../index.less";
+
+.list {
+  width: 100%;
+  position: relative;
+  .listCarousel {
+    width: 100%;
+    background: #F5F5F9;
+    -webkit-box-shadow: 0 0 0.1rem #CCCCCC;
+    -moz-box-shadow: 0 0 0.1rem #CCCCCC;
+    box-shadow: 0 0 0.1rem #CCCCCC;
+    padding: 0;
+    margin: 0.25rem 0;
+    overflow: hidden;
+    .imgList {
+      margin: 0;
+      padding: 0;
+      height: 2rem;
+      width: 2rem;
+      background: #ffffff;
+      img {
+        height: 2rem;
+        width: 2rem;
+      }
+    }
+  }
+  .listText {
+    position: absolute;
+    top: 0;
+    left: 2rem;
+    height: 2rem;
+    padding: 0.25rem;
+    background: inherit;
+    text-align: left;
+    z-index: 999;
+    b {
+      width: 2.5rem;
+      height: 0.5rem;
+      display: block;
+      white-space: nowrap;
+      -ms-text-overflow: ellipsis;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+    p {
+      font: 0.25rem/0.5rem sans-serif;
+      height: 1.5rem;
+    }
+  }
+}

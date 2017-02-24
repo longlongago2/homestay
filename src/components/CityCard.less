@@ -1,0 +1,42 @@
+@import "../index.less";
+
+.abstract {
+  text-align: left;
+  background: #EEE9E9;
+  width: 100%;
+  border-top-left-radius: 0.2rem;
+  border-top-right-radius: 0.2rem;
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+  .abstractTitle {
+    background: #CCCCCC;
+    font: bold 0.3rem/0.5rem sans-serif;
+    padding: 0 0.25rem;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .abstractText {
+    font: 0.25rem/0.5rem sans-serif;
+    min-height: 1.2rem;
+    overflow-x: hidden;
+    padding: 0.25rem;
+  }
+}
+
+.imageList {
+  .image {
+    width: 100%;
+    overflow-x: hidden;
+    padding: 0.1rem 0;
+    img {
+      width: 100%;
+      -webkit-border-radius: 0.2rem;
+      -moz-border-radius: 0.2rem;
+      border-radius: 0.2rem;
+    }
+    span {
+      font: 0.25rem/0.5rem sans-serif;
+      color: @text-color;
+    }
+  }
+}

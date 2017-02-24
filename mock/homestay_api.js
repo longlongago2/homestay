@@ -40,6 +40,20 @@ const mockData = Mock.mock({
     } ],
     'name': '@city'
   },
+  'homeStayList|15': [ {
+    'description': '@cword(15)',
+    'icons|2': [ {
+      'description': '@cword(15)',
+      'id': '@id',
+      'path|+1': [
+        'http://img.cnjiayu.net/3211573049-3310678237-21-0.jpg',
+        'http://up.qqya.com/allimg/201710-t/17-101803_106599.jpg'
+      ],
+      'title': '@ctitle(5,10)'
+    } ],
+    'id': '@id',
+    'name': '@cword(3,10)'
+  } ],
 });
 // 数据持久
 if (!global.resData) {
@@ -77,6 +91,16 @@ module.exports = {
         code,
         data: mockData.oneRegionDetail,
         message: ''
+      });
+    }, 1000);
+  },
+  'GET /homestay/region/:regionId/homestay.do': function (req, res) {
+    const code = '0000';
+    setTimeout(() => {
+      res.json({
+        code,
+        data: global.resData.homeStayList,
+        message: '',
       });
     }, 1000);
   }

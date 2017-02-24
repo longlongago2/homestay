@@ -1,5 +1,9 @@
 import { parse } from 'qs';
-import { queryRegionList, queryOneRegionDetailByRegionId } from '../services/region';
+import {
+  queryRegionList,
+  queryOneRegionDetailByRegionId,
+  queryHomeStayListByRegionId
+} from '../services/region';
 
 export default {
 
@@ -7,7 +11,8 @@ export default {
 
   state: {
     regionList: [],
-    oneRegionDetail: {}
+    oneRegionDetail: {},
+    homeStayList: [],
   },
 
   subscriptions: {
@@ -21,6 +26,12 @@ export default {
         if (location.pathname.indexOf('/region/') >= 0) {
           dispatch({
             type: 'queryOneRegionDetail',
+            payload: {
+              regionId: location.pathname.split('/')[ 2 ]
+            }
+          });
+          dispatch({
+            type: 'queryHomeStayList',
             payload: {
               regionId: location.pathname.split('/')[ 2 ]
             }
@@ -62,7 +73,23 @@ export default {
       } else {
         throw new Error(`接口异常：${data.code}`);
       }
-    }
+    },
+    * queryHomeStayList({ payload }, { call, put }) {
+      const { data, err } = yield call(queryHomeStayListByRegionId, parse(payload));
+      if (err) {
+        throw new Error(`fetch报错：${err.message}`);
+      }
+      if (data && data.code === '0000') {
+        yield put({
+          type: 'queryHomeStayListSuccess',
+          payload: {
+            homeStayList: data.data
+          }
+        });
+      } else {
+        throw new Error(`接口异常：${data.code}`);
+      }
+    },
   },
 
   reducers: {
@@ -72,6 +99,9 @@ export default {
     queryOneRegionDetailSuccess(state, action) {
       return { ...state, ...action.payload };
     },
+    queryHomeStayListSuccess(state, action) {
+      return { ...state, ...action.payload };
+    }
   },
 
 };

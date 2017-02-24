@@ -12,3 +12,10 @@ export async function queryOneRegionDetailByRegionId(params) {
     method: 'GET',
   });
 }
+
+export async function queryHomeStayListByRegionId(params) {
+  const { regionId } = params;
+  return request(`${api.mock_api}/homestay/region/:regionId/homestay.do`, {
+    method: 'GET'
+  });
+}

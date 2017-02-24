@@ -1,9 +1,22 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'dva';
-import { Card, WingBlank, WhiteSpace, Result, Icon, ListView } from 'antd-mobile';
+import { Result, Icon } from 'antd-mobile';
+import CityCard from '../../components/CityCard';
+import HomeStayList from '../../components/HomeStayList';
 import styles from './RegionDetailPage.less';
 
-const RegionDetailPage = ({ oneRegionDetail, loading }) => {
+const RegionDetailPage = ({ dispatch, oneRegionDetail, homeStayList, loading }) => {
+  function link(route) {
+    dispatch({
+      type: '@@router/LOCATION_CHANGE',
+      payload: {
+        pathname: route,
+        search: '',
+        key: '0aseeb',
+      }
+    });
+  }
+
   if (loading.models.Region) {
     return (
       <Result
@@ -14,44 +27,16 @@ const RegionDetailPage = ({ oneRegionDetail, loading }) => {
     );
   }
   return (
-    <WingBlank size="lg">
-      <WhiteSpace size="lg" />
-      <Card>
-        <Card.Header
-          title={oneRegionDetail.name}
-          thumb="http://up.qqjia.com/z/04/tu6133_4.jpg" thumbStyle={{ width: '1rem', height: '1rem' }}
-        />
-        <Card.Body>
-          <div className={styles.abstract}>
-            <div className={styles.abstractTitle}>
-              简介
-            </div>
-            <div className={styles.abstractText}>
-              {oneRegionDetail.description ? oneRegionDetail.description : '无数据'}
-            </div>
-          </div>
-          <div className={styles.imageList}>
-            {
-              oneRegionDetail.images ?
-                oneRegionDetail.images.map((item) => {
-                  return (
-                    <div key={`image-${item.id}`} className={styles.image}>
-                      <img src={item.path} alt={item.title} />
-                      <span>{item.description}</span>
-                    </div>
-                  );
-                }) : '无数据'
-            }
-          </div>
-        </Card.Body>
-        <Card.Footer extra={oneRegionDetail.name} />
-      </Card>
-      <WhiteSpace size="lg" />
-    </WingBlank>
+    <div>
+      <CityCard oneRegionDetail={oneRegionDetail} />
+      <HomeStayList homeStayList={homeStayList} onLink={route => link(route)} />
+    </div>
   );
 };
 RegionDetailPage.propTypes = {
+  dispatch: PropTypes.func,
   oneRegionDetail: PropTypes.object,
+  homeStayList: PropTypes.array,
   loading: PropTypes.object,
 };
 function mapStateToProps(state) {
