@@ -15,7 +15,7 @@ export async function queryOneRegionDetailByRegionId(params) {
 
 export async function queryHomeStayListByRegionId(params) {
   const { regionId } = params;
-  return request(`${api.mock_api}/region/:regionId/homestay.do`, {
+  return request(`${api.mock_api}/region/${regionId}/homestay.do`, {
     method: 'GET'
   });
 }
