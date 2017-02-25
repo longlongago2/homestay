@@ -1,0 +1,16 @@
+@import "../../index.less";
+
+.cardBody {
+  text-align: left;
+  font: 0.25rem/0.5rem sans-serif;
+  .houseList {
+    width: 100%;;
+  }
+  .houseList:not(:last-child):after {
+    content: "";
+    display: block;
+    height: 0.5rem;
+    border-bottom: 1px solid @base-color;
+    margin-bottom: 0.5rem;
+  }
+}

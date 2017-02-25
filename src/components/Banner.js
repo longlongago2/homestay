@@ -2,8 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import { Carousel, ActivityIndicator } from 'antd-mobile';
 import styles from './Banner.less';
 
-const Banner = ({ bannerList, loading }) => {
-  if (loading) {
+const Banner = ({ bannerList, loading, keyName }) => {
+  if (typeof loading === 'boolean' && loading) {
     return (
       <div className={styles.loading}>
         <ActivityIndicator size="large" />
@@ -14,13 +14,13 @@ const Banner = ({ bannerList, loading }) => {
     <div className={styles.carouselLayout}>
       <Carousel
         className={styles.carousel}
-        autoplay={bannerList && bannerList.length > 0}
-        infinite={bannerList && bannerList.length > 0}
+        autoplay={bannerList && bannerList.length > 1}
+        infinite={bannerList && bannerList.length > 1}
       >
         {
           bannerList && bannerList.length > 0 ?
             bannerList.map(item =>
-              <a key={item.id}>
+              <a key={`${keyName}-${item.id}`}>
                 <img src={item.path} alt={item.description} title={item.title} />
               </a>
             ) :
@@ -35,7 +35,8 @@ const Banner = ({ bannerList, loading }) => {
 
 Banner.propTypes = {
   bannerList: PropTypes.array.isRequired,
-  loading: PropTypes.bool.isRequired,
+  loading: PropTypes.any.isRequired,
+  keyName: PropTypes.string,
 };
 
 export default Banner;

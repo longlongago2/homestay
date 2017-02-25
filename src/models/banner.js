@@ -35,7 +35,7 @@ export default {
           }
         });
       } else {
-        throw new Error(`接口异常：${data.code}`);
+        throw new Error(`接口异常：${data.message}，错误码：${data.code}`);
       }
     },
   },

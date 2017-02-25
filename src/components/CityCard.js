@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Card, WingBlank, WhiteSpace } from 'antd-mobile';
+import ImageList from '../components/ImageList';
 import styles from './CityCard.less';
 
 const CityCard = ({ oneRegionDetail }) => {
@@ -21,19 +22,7 @@ const CityCard = ({ oneRegionDetail }) => {
               {oneRegionDetail.description ? oneRegionDetail.description : '无数据'}
             </div>
           </div>
-          <div className={styles.imageList}>
-            {
-              oneRegionDetail.images ?
-                oneRegionDetail.images.map((item) => {
-                  return (
-                    <div key={`image-${item.id}`} className={styles.image}>
-                      <img src={item.path} alt={item.title} />
-                      <span>{item.description}</span>
-                    </div>
-                  );
-                }) : '无图片数据'
-            }
-          </div>
+          <ImageList dataList={oneRegionDetail.images} keyName="city-images-" />
         </Card.Body>
         <Card.Footer extra={oneRegionDetail.name} />
       </Card>

@@ -23,19 +23,27 @@ const HomeStayList = ({ homeStayList, onLink }) => {
                         item.icons && item.icons.length > 0 ?
                           item.icons.map((secondItem) => {
                             return (
-                              <div
-                                key={`icons-${secondItem.id}`}
-                                className={styles.imgList}
-                                title={secondItem.description}
-                                style={{
-                                  background: `#ffffff url('${secondItem.path}') no-repeat center`,
-                                  backgroundSize: 'cover',
-                                }}
-                              />
+                              <div key={`icons-${secondItem.id}`}>
+                                <div
+                                  className={styles.imgList}
+                                  title={secondItem.description}
+                                  style={{
+                                    background: `#ffffff url('${secondItem.path}') no-repeat center`,
+                                    backgroundSize: 'cover',
+                                  }}
+                                />
+                              </div>
                             );
                           }) :
-                          <div className={styles.imgList}>
-                            <img src={require('../statics/no-picture.png')} alt="无数据" />
+                          <div>
+                            <div
+                              className={styles.imgList}
+                              title="无数据"
+                              style={{
+                                background: `#ffffff url('${require('../statics/no-picture.png')}') no-repeat center`,
+                                backgroundSize: 'cover',
+                              }}
+                            />
                           </div>
                       }
                     </Carousel>

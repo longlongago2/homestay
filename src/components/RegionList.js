@@ -33,7 +33,14 @@ const RegionList = ({ loading, regionList, onLink }) => {
                                 onLink(`/region/${secondItem.id}`);
                               }}
                             >
-                              <img src="http://up.qqjia.com/z/04/tu6133_4.jpg" alt={secondItem.description} />
+                              <img
+                                src={
+                                  secondItem.images && secondItem.images.length > 0 ?
+                                    secondItem.images[ 0 ].path :
+                                    require('../statics/no-picture.png')
+                                }
+                                alt={secondItem.description}
+                              />
                             </a>
                             <span>{secondItem.name}</span>
                           </li>

@@ -1,5 +1,5 @@
 module.exports = {
-  server_api: '',
+  server_api: '/homestay',
   debug_api: '',
   mock_api: '',
 };
