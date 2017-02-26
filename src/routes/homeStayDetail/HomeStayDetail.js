@@ -44,7 +44,6 @@ const HomeStayDetail = ({ info, album, house, loading }) => {
           title="民宿房型"
           thumb={require('../../statics/house.png')}
           thumbStyle={{ height: '0.5rem', width: '0.5rem' }}
-          extra={<span>房型介绍</span>}
         />
         <Card.Body>
           <div className={styles.cardBody}>
@@ -54,17 +53,17 @@ const HomeStayDetail = ({ info, album, house, loading }) => {
                   return (
                     <div key={`house-${item.id}`} className={styles.houseList}>
                       <div>
-                        房型名称：<b>{item.name}</b>
+                        房型名称：<b>{item.name ? item.name : '暂无数据'}</b>
                       </div>
                       <div>
-                        房型描述：{item.description}
+                        房型描述：{item.description ? item.description : '暂无数据'}
                       </div>
                       <div>
-                        房型图片：
+                        房型图片：如下图
                         <ImageList dataList={item.images} loading={loading.models.HomeStay} keyName="house-images-" />
                       </div>
                       <div className={styles.price}>
-                        价格：<b>{item.price}</b>
+                        价格：<b>{item.price ? item.price : '暂无数据'}</b>
                       </div>
                     </div>
                   );
