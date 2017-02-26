@@ -11,17 +11,9 @@ const CityCard = ({ oneRegionDetail }) => {
         <Card.Header
           title={oneRegionDetail.name}
           thumb={require('../statics/city.png')}
-          thumbStyle={{ width: '1rem', height: '1rem' }}
+          thumbStyle={{ width: '0.8rem', height: '0.8rem' }}
         />
         <Card.Body>
-          <div className={styles.abstract}>
-            <div className={styles.abstractTitle}>
-              简介
-            </div>
-            <div className={styles.abstractText}>
-              {oneRegionDetail.description ? oneRegionDetail.description : '无数据'}
-            </div>
-          </div>
           <ImageList dataList={oneRegionDetail.images} keyName="city-images-" />
         </Card.Body>
         <Card.Footer extra={oneRegionDetail.name} />

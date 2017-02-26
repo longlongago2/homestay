@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { Result, Icon } from 'antd-mobile';
 import QueueAnimation from 'rc-queue-anim';
+import LazyLoad from 'react-lazy-load';
 import styles from './RegionList.less';
 
 const RegionList = ({ loading, regionList, onLink }) => {
@@ -33,14 +34,16 @@ const RegionList = ({ loading, regionList, onLink }) => {
                                 onLink(`/region/${secondItem.id}`);
                               }}
                             >
-                              <img
-                                src={
-                                  secondItem.images && secondItem.images.length > 0 ?
-                                    secondItem.images[ 0 ].path :
-                                    require('../statics/no-picture.png')
-                                }
-                                alt={secondItem.description}
-                              />
+                              <LazyLoad>
+                                <img
+                                  src={
+                                    secondItem.images && secondItem.images.length > 0 ?
+                                      secondItem.images[ 0 ].path :
+                                      require('../statics/no-picture.png')
+                                  }
+                                  alt={secondItem.description}
+                                />
+                              </LazyLoad>
                             </a>
                             <span>{secondItem.name}</span>
                           </li>

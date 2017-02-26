@@ -41,8 +41,8 @@ const mockData = Mock.mock({
     'childRegions': [],
     'description': '@cword(50)',
     'id': '@id',
-    'images|2-4': [ {
-      'description': '@cword(10)',
+    'images|1-4': [ {
+      'description': '',
       'id|+1': 0,
       'path|+1': [
         'https://zos.alipayobjects.com/rmsportal/hzPBTkqtFpLlWCi.jpg',
@@ -53,7 +53,7 @@ const mockData = Mock.mock({
     'name': '@city'
   },
   'homeStayList|15': [ {
-    'description': '@cword(15)',
+    'description': '@cword(50)',
     'icons|0-4': [ {
       'description': '@cword(15)',
       'id': '@id',

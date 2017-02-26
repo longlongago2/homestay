@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Icon } from 'antd-mobile';
+import LazyLoad from 'react-lazy-load';
 import styles from './ImageList.less';
 
 const ImageList = ({ dataList, loading, keyName }) => {
@@ -12,9 +13,18 @@ const ImageList = ({ dataList, loading, keyName }) => {
         dataList && dataList.length > 0 ?
           dataList.map((item) => {
             return (
-              <div key={`${keyName}-${item.id}`} className={styles.image}>
-                <img src={item.path} alt={item.title} />
-                <span>{item.description}</span>
+              <div key={`${keyName}-${item.id}`} className={styles.layout}>
+                <div className={styles.image}>
+                  <LazyLoad>
+                    <img src={item.path} alt={item.title} />
+                  </LazyLoad>
+                </div>
+                {
+                  item.description && item.description.trim() !== '' ?
+                    <div className={styles.description}>
+                      {`${item.description.substr(0, 12)}...`}
+                    </div> : null
+                }
               </div>
             );
           }) : '无图片数据'

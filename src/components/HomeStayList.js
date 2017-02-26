@@ -10,7 +10,7 @@ const HomeStayList = ({ homeStayList, onLink }) => {
         <Card.Header
           title="民宿信息"
           thumb={require('../statics/homeStay.png')}
-          thumbStyle={{ width: '1rem', height: '1rem' }}
+          thumbStyle={{ width: '0.8rem', height: '0.8rem' }}
         />
         <Card.Body>
           {
@@ -48,15 +48,19 @@ const HomeStayList = ({ homeStayList, onLink }) => {
                       }
                     </Carousel>
                     <div className={styles.listText}>
-                      <b>{item.name}</b>
-                      <p>{item.description}</p>
+                      <div className={styles.title}>
+                        {item.name}
+                      </div>
+                      <div className={styles.profile}>
+                        简介：{`${item.description.substr(0, 25)}...`}
+                      </div>
                     </div>
                   </div>
                 );
               }) : '无数据'
           }
         </Card.Body>
-        <Card.Footer extra={`${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()} 更新`} />
+        <Card.Footer extra={`${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()} 更新`} />
       </Card>
       <WhiteSpace size="lg" />
     </WingBlank>

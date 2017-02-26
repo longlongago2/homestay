@@ -63,8 +63,8 @@ const HomeStayDetail = ({ info, album, house, loading }) => {
                         房型图片：
                         <ImageList dataList={item.images} loading={loading.models.HomeStay} keyName="house-images-" />
                       </div>
-                      <div>
-                        价格：{item.price}
+                      <div className={styles.price}>
+                        价格：<b>{item.price}</b>
                       </div>
                     </div>
                   );

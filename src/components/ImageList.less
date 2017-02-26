@@ -1,19 +1,41 @@
 @import "../index.less";
 
 .imageList {
-  .image {
+  padding: 0;
+  margin: 0;
+  .layout {
+    position: relative;
     width: 100%;
-    overflow-x: hidden;
-    padding: 0.1rem 0;
-    img {
+    padding: 0;
+    margin: 0.1rem 0;
+    .image {
       width: 100%;
-      -webkit-border-radius: 0.1rem;
-      -moz-border-radius: 0.1rem;
-      border-radius: 0.1rem;
+      height: auto;
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+        -webkit-border-radius: 0.1rem;
+        -moz-border-radius: 0.1rem;
+        border-radius: 0.1rem;
+      }
     }
-    span {
+    .description {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      display: block;
+      white-space: nowrap;
+      width: 100%;
+      height: 0.5rem;
+      overflow: hidden;
       font: 0.25rem/0.5rem sans-serif;
-      color: @text-color;
+      text-align: center;
+      color: #ffffff;
+      background: #000000;
+      opacity: 0.6;
+      border-bottom-left-radius: 0.1rem;
+      border-bottom-right-radius: 0.1rem;
     }
   }
 }
