@@ -56,9 +56,6 @@ const HomeStayDetail = ({ info, album, house, loading }) => {
                         房型名称：<b>{item.name ? item.name : '暂无数据'}</b>
                       </div>
                       <div>
-                        房型描述：{item.description ? item.description : '暂无数据'}
-                      </div>
-                      <div>
                         房型图片：如下图
                         <ImageList dataList={item.images} loading={loading.models.HomeStay} keyName="house-images-" />
                       </div>

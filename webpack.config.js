@@ -76,7 +76,8 @@ module.exports = function (webpackConfig, env) {
     include: svgDirs, // 把 svgDirs 路径下的所有 svg 文件交给 svg-sprite-loader 插件处理
   });
 
-  // CSS像素单位 px 转 rem：配合高清方案
+  // CSS像素单位px转rem：主要针对使用px作单位的布局，使其按照比例换算成rem单位，方便高清设置整体替换参照物大小来配置布局
+  // 如果您的项目全部使用rem布局，则不必使用此插件来转换
   webpackConfig.postcss.push(PxToRem({
     rootValue: 100,
     propList: [ 'font', 'font-size', 'height', 'width', 'line-height' ],

@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { Result, Icon } from 'antd-mobile';
 import QueueAnimation from 'rc-queue-anim';
 import LazyLoad from 'react-lazy-load';
+import center from '../HOCs/center';
 import styles from './RegionList.less';
 
 const RegionList = ({ loading, regionList, onLink }) => {
@@ -22,7 +23,7 @@ const RegionList = ({ loading, regionList, onLink }) => {
             return (
               <div key={`first-${item.id}`} className={styles.listContent}>
                 <em>{item.name}</em>
-                <div className={styles.secondList}>
+                <div name="regionLayout" className={styles.secondList}>
                   {
                     item.childRegions && item.childRegions.length > 0 ?
                       item.childRegions.map((secondItem) => {
@@ -63,4 +64,4 @@ RegionList.propTypes = {
   regionList: PropTypes.array.isRequired,
   onLink: PropTypes.func.isRequired,
 };
-export default RegionList;
+export default center('div[name="regionLayout"]', 'li')(RegionList);
