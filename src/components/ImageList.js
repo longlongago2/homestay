@@ -16,7 +16,9 @@ const ImageList = ({ dataList, loading, keyName }) => {
               <div key={`${keyName}-${item.id}`} className={styles.layout}>
                 <div className={styles.image}>
                   <LazyLoad>
-                    <img src={item.path} alt={item.title} />
+                    <a href={item.link}>
+                      <img src={item.path} alt={item.title} />
+                    </a>
                   </LazyLoad>
                 </div>
                 {

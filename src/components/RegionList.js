@@ -26,7 +26,7 @@ const RegionList = ({ loading, regionList, onLink }) => {
                 <div name="regionLayout" className={styles.secondList}>
                   {
                     item.childRegions && item.childRegions.length > 0 ?
-                      item.childRegions.map((secondItem) => {
+                      item.childRegions.map((secondItem, i) => {
                         return (
                           <li key={`second-${secondItem.id}`}>
                             <a
@@ -39,9 +39,12 @@ const RegionList = ({ loading, regionList, onLink }) => {
                                 <img
                                   src={
                                     secondItem.images && secondItem.images.length > 0 ?
-                                      secondItem.images[ 0 ].path :
+                                      secondItem.images[0].path :
                                       require('../statics/no-picture.png')
                                   }
+                                  onError={(e) => {
+                                    e.target.src = require('../statics/no-picture.png');
+                                  }}
                                   alt={secondItem.description}
                                 />
                               </LazyLoad>

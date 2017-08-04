@@ -3,7 +3,7 @@ import { connect } from 'dva';
 import { Result, Icon, WhiteSpace } from 'antd-mobile';
 import CityCard from '../../components/CityCard';
 import HomeStayList from '../../components/HomeStayList';
-import styles from './RegionDetailPage.less';
+import styles from './index.less';
 
 const RegionDetailPage = ({ dispatch, oneRegionDetail, homeStayList, loading }) => {
   function link(route) {

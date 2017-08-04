@@ -1,8 +1,9 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'dva';
 import Banner from '../../components/Banner';
 import Region from '../../components/RegionList';
-import styles from './IndexPage.less';
+import styles from './index.less';
 
 const IndexPage = ({ dispatch, bannerList, regionList, loading }) => {
   function link(route) {

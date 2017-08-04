@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Carousel, ActivityIndicator } from 'antd-mobile';
 import styles from './Banner.less';
 
@@ -20,7 +21,7 @@ const Banner = ({ bannerList, loading, keyName }) => {
         {
           bannerList && bannerList.length > 0 ?
             bannerList.map(item =>
-              <a key={`${keyName}-${item.id}`}>
+              <a key={`${keyName}-${item.id}`} href={item.link}>
                 <img src={item.path} alt={item.description} title={item.title} />
               </a>
             ) :

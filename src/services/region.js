@@ -1,6 +1,6 @@
 import request from '../utils/request';
 
-export async function queryRegionList(params) {
+export async function queryRegionList() {
   return request(`${api.mock_api}/region.do`, {
     method: 'GET'
   });

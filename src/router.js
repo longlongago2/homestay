@@ -1,15 +1,15 @@
-import React, { PropTypes } from 'react';
-import { Router, Route, IndexRoute, Link } from 'dva/router';
-import IndexPage from './routes/indexPage/IndexPage';
-import RegionDetailPage from './routes/regionDetailPage/RegionDetailPage';
-import HomeStayDetail from './routes/homeStayDetail/HomeStayDetail';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Router, Route } from 'dva/router';
+import HomePage from './routes/homePage';
+import RegionDetail from './routes/regionDetail';
+import HomeStayDetail from './routes/homeStayDetail';
 
 const Website = ({ history }) => {
   return (
     <Router history={history}>
-      <IndexPage component={IndexPage} />
-      <Route path="/" component={IndexPage} />
-      <Route path="/region/:regionId" component={RegionDetailPage} />
+      <Route path="/" component={HomePage} />
+      <Route path="/region/:regionId" component={RegionDetail} />
       <Route path="/homeStay/:id" component={HomeStayDetail} />
     </Router>
   );

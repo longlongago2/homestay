@@ -1,9 +1,10 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'dva';
 import { Card, WhiteSpace, Result, Icon } from 'antd-mobile';
 import Banner from '../../components/Banner';
 import ImageList from '../../components/ImageList';
-import styles from './HomeStayDetail.less';
+import styles from './index.less';
 
 const HomeStayDetail = ({ info, album, house, loading }) => {
   if (loading.models.HomeStay) {
@@ -34,7 +35,7 @@ const HomeStayDetail = ({ info, album, house, loading }) => {
         <Card.Body>
           <div className={styles.cardBody}>
             <div>名称：{info.name ? info.name : '无数据'}</div>
-            <div>简介：{info.introduction ? info.introduction : '无数据'}</div>
+            <div dangerouslySetInnerHTML={{ __html: `简介：${info.introduction ? info.introduction : '无数据'}` }} />
           </div>
         </Card.Body>
       </Card>
@@ -53,14 +54,14 @@ const HomeStayDetail = ({ info, album, house, loading }) => {
                   return (
                     <div key={`house-${item.id}`} className={styles.houseList}>
                       <div>
-                        房型名称：<b>{item.name ? item.name : '暂无数据'}</b>
+                        房型名称：<b><a href={item.link}>{item.name ? item.name : '暂无数据'}</a></b>
                       </div>
                       <div>
                         房型图片：如下图
                         <ImageList dataList={item.images} loading={loading.models.HomeStay} keyName="house-images-" />
                       </div>
                       <div className={styles.price}>
-                        价格：<b>{item.price ? item.price : '暂无数据'}</b>
+                        价格：<b><a href={item.link}>{item.price ? item.price : '暂无数据'}</a></b>
                       </div>
                     </div>
                   );
@@ -114,4 +115,5 @@ function mapStateToProps(state) {
     loading: state.present.loading,
   };
 }
+
 export default connect(mapStateToProps)(HomeStayDetail);

@@ -54,7 +54,8 @@
     "no-obj-calls": 0,
     "jsx-a11y/no-static-element-interactions": 0,
     "computed-property-spacing": 0,
-    "linebreak-style": 0
+    "linebreak-style": 0,
+    "react/no-danger": 0,
   },
   "globals": {
     // 全局变量
