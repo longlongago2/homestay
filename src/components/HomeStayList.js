@@ -1,11 +1,12 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Card, WingBlank, WhiteSpace, Carousel } from 'antd-mobile';
 import styles from './HomeStayList.less';
 
 const HomeStayList = ({ homeStayList, onLink }) => {
   return (
-    <WingBlank size="lg">
-      <WhiteSpace size="lg" />
+    <WingBlank size="md">
+      <WhiteSpace size="md" />
       <Card>
         <Card.Header
           title="民宿信息"
@@ -40,7 +41,7 @@ const HomeStayList = ({ homeStayList, onLink }) => {
                               className={styles.imgList}
                               title="无数据"
                               style={{
-                                background: `#ffffff url('${require('../statics/no-picture.png')}') no-repeat center`,
+                                background: `#ffffff url('${require('../statics/default-image.jpg')}') no-repeat center`,
                                 backgroundSize: 'cover',
                               }}
                             />
@@ -62,7 +63,7 @@ const HomeStayList = ({ homeStayList, onLink }) => {
         </Card.Body>
         <Card.Footer extra={`${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()} 更新`} />
       </Card>
-      <WhiteSpace size="lg" />
+      <WhiteSpace size="md" />
     </WingBlank>
   );
 };

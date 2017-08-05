@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Icon } from 'antd-mobile';
 import LazyLoad from 'react-lazy-load';
 import styles from './ImageList.less';
@@ -17,7 +18,13 @@ const ImageList = ({ dataList, loading, keyName }) => {
                 <div className={styles.image}>
                   <LazyLoad>
                     <a href={item.link}>
-                      <img src={item.path} alt={item.title} />
+                      <img
+                        src={item.path}
+                        onError={(e) => {
+                          e.target.src = require('../statics/default-image.jpg');
+                        }}
+                        alt={item.title}
+                      />
                     </a>
                   </LazyLoad>
                 </div>

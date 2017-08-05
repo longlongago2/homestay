@@ -4,6 +4,7 @@ import { Router, Route } from 'dva/router';
 import HomePage from './routes/homePage';
 import RegionDetail from './routes/regionDetail';
 import HomeStayDetail from './routes/homeStayDetail';
+import ChartPage from './routes/chartPage';
 
 const Website = ({ history }) => {
   return (
@@ -11,6 +12,7 @@ const Website = ({ history }) => {
       <Route path="/" component={HomePage} />
       <Route path="/region/:regionId" component={RegionDetail} />
       <Route path="/homeStay/:id" component={HomeStayDetail} />
+      <Route path="/chart" component={ChartPage} />
     </Router>
   );
 };

@@ -22,7 +22,14 @@ const Banner = ({ bannerList, loading, keyName }) => {
           bannerList && bannerList.length > 0 ?
             bannerList.map(item =>
               <a key={`${keyName}-${item.id}`} href={item.link}>
-                <img src={item.path} alt={item.description} title={item.title} />
+                <img
+                  src={item.path}
+                  alt={item.description}
+                  title={item.title}
+                  onError={(e) => {
+                    e.target.src = require('../statics/default-image.jpg');
+                  }}
+                />
               </a>
             ) :
             <a>

@@ -1,12 +1,13 @@
-import React, { Component, PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Card, WingBlank, WhiteSpace } from 'antd-mobile';
 import ImageList from '../components/ImageList';
 import styles from './CityCard.less';
 
 const CityCard = ({ oneRegionDetail }) => {
   return (
-    <WingBlank size="lg">
-      <WhiteSpace size="lg" />
+    <WingBlank size="md">
+      <WhiteSpace size="md" />
       <Card>
         <Card.Header
           title={oneRegionDetail.name}
@@ -18,7 +19,7 @@ const CityCard = ({ oneRegionDetail }) => {
         </Card.Body>
         <Card.Footer extra={oneRegionDetail.name} />
       </Card>
-      <WhiteSpace size="lg" />
+      <WhiteSpace size="md" />
     </WingBlank>
   );
 };

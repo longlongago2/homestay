@@ -8,7 +8,7 @@ module.exports = function (webpackConfig, env) {
   webpackConfig.babel.plugins.push('transform-runtime');
 
   // babel-plugin-import: Import lib Ant-Design-Mobile and style CSS as required
-  webpackConfig.babel.plugins.push([ 'import', { libraryName: 'antd-mobile', style: 'css' } ]);
+  webpackConfig.babel.plugins.push([ 'import', { libraryName: 'antd-mobile', style: true } ]);
 
   webpackConfig.plugins.push(
     // global variable
