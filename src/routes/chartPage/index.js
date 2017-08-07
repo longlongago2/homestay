@@ -42,6 +42,7 @@ class ChartPage extends Component {
             二十八宿访问统计图
           </div>
           <div className={styles.body}>
+            <div className={styles.groupBtn}>按钮组</div>
             {
               loading.models.Chart ?
                 <ActivityIndicator toast text="正在加载" /> :
@@ -90,6 +91,7 @@ class ChartPage extends Component {
 
 ChartPage.propTypes = {
   data: PropTypes.array.isRequired,
+  loading: PropTypes.object,
 };
 
 const mapStateToProps = state => ({
