@@ -40,6 +40,7 @@ app.use({
 app.model(require('./models/banner'));
 app.model(require('./models/region'));
 app.model(require('./models/homestay'));
+app.model(require('./models/chart'));
 
 // 4. Router
 app.router(require('./router'));

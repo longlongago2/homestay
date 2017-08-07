@@ -56,6 +56,8 @@
     "computed-property-spacing": 0,
     "linebreak-style": 0,
     "react/no-danger": 0,
+    "import/prefer-default-export": 1,
+    "no-unused-expressions": 0
   },
   "globals": {
     // 全局变量

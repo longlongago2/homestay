@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { stringify } from 'qs';
 import request from '../utils/request';
-import api from '../utils/api';
 
 export default function center(elm, childElm) {
   return function (Comp) {

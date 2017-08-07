@@ -1,7 +1,6 @@
 const webpack = require('atool-build/lib/webpack');
 const path = require('path');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
-const glob = require('glob');
 const PxToRem = require('postcss-pxtorem');
 
 module.exports = function (webpackConfig, env) {
