@@ -10,11 +10,12 @@ export default {
   subscriptions: {
     setup({ dispatch, history }) {
       history.listen((location) => {
+        const defaultDate = moment().format('YYYY-MM');
         if (location.pathname === '/chart') {
           dispatch({
             type: 'queryChartData',
             payload: {
-              date: '2017-08',
+              date: defaultDate,
             },
           });
         }

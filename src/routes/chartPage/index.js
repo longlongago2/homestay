@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'dva';
-import { Popover, Icon, ActivityIndicator } from 'antd-mobile';
-import { XYPlot, XAxis, YAxis, HorizontalGridLines, LineMarkSeries, Hint } from 'react-vis';
-import 'react-vis/dist/style.css';
+import { ActivityIndicator, Button, Modal } from 'antd-mobile';
+import moment from 'moment';
+import LineChart from './LineChart';
 import styles from './index.less';
+
+const alert = Modal.alert;
 
 class ChartPage extends Component {
   constructor(props) {
@@ -12,8 +14,10 @@ class ChartPage extends Component {
     this.state = {
       innerWidth: window.innerWidth,
       innerHeight: window.innerHeight,
+      date: moment().format('YYYY-MM'),
     };
     this.clientResize = this._clientResize.bind(this);
+    this.handleAlertPress = this._handleAlertPress.bind(this);
   }
 
 
@@ -32,53 +36,52 @@ class ChartPage extends Component {
     });
   }
 
+  _handleAlertPress(yearAndMonth) {
+    const { dispatch } = this.props;
+    this.setState({ date: yearAndMonth });
+    dispatch({
+      type: 'Chart/queryChartData',
+      payload: {
+        date: yearAndMonth
+      },
+    });
+  }
+
   render() {
     const { data, loading } = this.props;
-    const { innerWidth, innerHeight } = this.state;
+    const { innerWidth, innerHeight, date } = this.state;
     return (
       <div className={styles.layout}>
+        {
+          loading.models.Chart && <ActivityIndicator toast text="正在加载" />
+        }
         <div className={styles.content}>
           <div className={styles.header}>
-            二十八宿访问统计图
+            二十八宿访问统计图：{date}
           </div>
           <div className={styles.body}>
-            <div className={styles.groupBtn}>按钮组</div>
-            {
-              loading.models.Chart ?
-                <ActivityIndicator toast text="正在加载" /> :
-                <XYPlot
-                  width={innerWidth * 0.8}
-                  height={innerHeight * 0.5}
-                  animation
-                >
-                  <LineMarkSeries
-                    color="#108EE9"
-                    curve={'curveMonotoneX'}
-                    data={data}
-                    size={4}
-                  />
-                  <HorizontalGridLines />
-                  <XAxis
-                    title="日期"
-                    tickFormat={value => `${value}日`}
-                    tickTotal={data.length}
-                    tickLabelAngle={45}
-                    tickPadding={30}
-                    tickSize={5}
-                    style={{
-                      line: { stroke: '#ffffff' },
-                      text: { stroke: 'none', fill: '#ffffff', fontWeight: 300, fontSize: 15 },
-                    }}
-                  />
-                  <YAxis
-                    title="访问人数"
-                    style={{
-                      line: { stroke: '#ffffff' },
-                      text: { stroke: 'none', fill: '#ffffff', fontWeight: 300, fontSize: 15 },
-                    }}
-                  />
-                </XYPlot>
-            }
+            {Array.isArray(data) && data.length === 0 && !loading.models.Chart ? '无数据' : null}
+            <Button
+              className={styles.popup}
+              activeClassName={styles.popupPress}
+              onClick={() => alert('请选择月份', <div>{`本月：${moment().format('YYYY-MM')}，按月份查看`}</div>, [
+                {
+                  text: `${moment().format('MM')} 月`,
+                  onPress: () => this.handleAlertPress(moment().format('YYYY-MM'))
+                },
+                {
+                  text: `${moment().subtract(1, 'months').format('MM')} 月`,
+                  onPress: () => this.handleAlertPress(moment().subtract(1, 'months').format('YYYY-MM'))
+                },
+                {
+                  text: `${moment().subtract(2, 'months').format('MM')} 月`,
+                  onPress: () => this.handleAlertPress(moment().subtract(2, 'months').format('YYYY-MM'))
+                },
+              ])}
+            >
+              ...
+            </Button>
+            <LineChart innerHeight={innerHeight} innerWidth={innerWidth} data={data} />
           </div>
         </div>
         <div className={styles.footer}>
@@ -90,6 +93,7 @@ class ChartPage extends Component {
 }
 
 ChartPage.propTypes = {
+  dispatch: PropTypes.func.isRequired,
   data: PropTypes.array.isRequired,
   loading: PropTypes.object,
 };
