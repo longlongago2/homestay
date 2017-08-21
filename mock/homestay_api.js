@@ -55,7 +55,7 @@ const mockData = Mock.mock({
     'name': '@city',
   },
   'homeStayList|15': [ {
-    'description': '@cword(50)',
+    'description': '<a href="http://www.baidu.com">你点我</a>@cword(50)',
     'icons|0-4': [ {
       'description': '@cword(15)',
       'id': '@id',

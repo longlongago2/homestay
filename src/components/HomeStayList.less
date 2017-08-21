@@ -43,5 +43,18 @@
       height: 1rem;
       overflow: hidden;
     }
+    .profile:after {
+      content: '';
+      display: block;
+      height: 0.5rem;
+      width: 0.5rem;
+      position: absolute;
+      bottom: 0.25rem;
+      right: 0.25rem;
+      background: -webkit-linear-gradient(left, rgba(245, 245, 249, 0.5), rgba(245, 245, 249, 1));
+      background: -o-linear-gradient(right, rgba(245, 245, 249, 0.5), rgba(245, 245, 249, 1));
+      background: -moz-linear-gradient(right, rgba(245, 245, 249, 0.5), rgba(245, 245, 249, 1));
+      background: linear-gradient(to right, rgba(245, 245, 249, 0.5), rgba(245, 245, 249, 1));
+    }
   }
 }

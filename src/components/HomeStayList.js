@@ -52,9 +52,12 @@ const HomeStayList = ({ homeStayList, onLink }) => {
                       <div className={styles.title}>
                         {item.name}
                       </div>
-                      <div className={styles.profile}>
-                        简介：{`${item.description.substr(0, 25)}...`}
-                      </div>
+                      <div
+                        className={styles.profile}
+                        dangerouslySetInnerHTML={{
+                          __html: item.description,
+                        }}
+                      />
                     </div>
                   </div>
                 );
