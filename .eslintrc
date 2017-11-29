@@ -62,7 +62,8 @@
   "globals": {
     // 全局变量
     "api": true,
-    "$": true
+    "$": true,
+    "WeixinJSBridge": true
   },
   "env": {
     // 环境

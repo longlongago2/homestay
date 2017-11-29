@@ -21,7 +21,7 @@ const Banner = ({ bannerList, loading, keyName }) => {
         {
           bannerList && bannerList.length > 0 ?
             bannerList.map(item =>
-              <a key={`${keyName}-${item.id}`} href={item.link}>
+              <a key={`${keyName}-${item.id}`} href={item.link || null}>
                 <img
                   src={item.path}
                   alt={item.description}
@@ -30,7 +30,7 @@ const Banner = ({ bannerList, loading, keyName }) => {
                     e.target.src = require('../statics/default-image.jpg');
                   }}
                 />
-              </a>
+              </a>,
             ) :
             <a>
               <li>无数据</li>

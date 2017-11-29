@@ -54,14 +54,14 @@ const HomeStayDetail = ({ info, album, house, loading }) => {
                   return (
                     <div key={`house-${item.id}`} className={styles.houseList}>
                       <div>
-                        房型名称：<b><a href={item.link}>{item.name ? item.name : '暂无数据'}</a></b>
+                        房型名称：<b><a href={item.link || null}>{item.name ? item.name : '暂无数据'}</a></b>
                       </div>
                       <div>
                         房型图片：如下图
                         <ImageList dataList={item.images} loading={loading.models.HomeStay} keyName="house-images-" />
                       </div>
                       <div className={styles.price}>
-                        价格：<b><a href={item.link}>{item.price ? item.price : '暂无数据'}</a></b>
+                        价格：<b><a href={item.link || null}>{item.price ? item.price : '暂无数据'}</a></b>
                       </div>
                     </div>
                   );
